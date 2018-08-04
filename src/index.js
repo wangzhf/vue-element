@@ -5,11 +5,16 @@ import App from './App.vue'
 
 Vue.config.productionTip = false
 
-Vue.use(Element, {size: 'medium', zIndex: 3000})
+Vue.use(Element, {
+  size: 'medium',
+  zIndex: 3000
+})
 
 new Vue({
-    el: '#app',
-    router,
-    components: {App},
-    template: '<App />'
+  el: '#app',
+  router,
+  components: {
+    App
+  },
+  template: '<App />'
 });
