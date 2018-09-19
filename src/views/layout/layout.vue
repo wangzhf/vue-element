@@ -58,7 +58,7 @@ export default {
   .main-container {
     min-height: 100%;
     transition: margin-left 0.28s ease-out;
-    margin-left: 210px;
+    // margin-left: 210px;
   }
 }
 </style>
