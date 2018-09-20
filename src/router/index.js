@@ -8,6 +8,7 @@ import Layout from '@/views/layout/Layout'
 
 /* Router Modules */
 import nestedRouter from './modules/nested'
+import users from './modules/user'
 
 /** note: Submenu only appear when children.length>=1
  *  detail see  https://panjiachen.github.io/vue-element-admin-site/guide/essentials/router-and-nav.html
@@ -128,6 +129,8 @@ export const asyncRouterMap = [
 
   /** When your routing table is too long, you can split it into small modules**/
   nestedRouter,
+
+  users,
 
   {
     path: '/tab',
