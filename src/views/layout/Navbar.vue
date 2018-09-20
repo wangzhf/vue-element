@@ -1,14 +1,45 @@
 <template>
-  <header class="main-header animated">
+  <header class="main-header animated" :class="{closeLogo: sidebar.collapsed, mobileLogo: device.isMobile}">
     <a href="#" class="logo">
-      <span class="logo-lg"><i class="fa fa-diamond"></i>&nbsp; <b>Vue-Admin</b></span>
+      <span class="logo-lg"><i class="fa fa-diamond"></i>&nbsp; <b>Hello World</b></span>
     </a>
+    <nav class="navbar">
+      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button"
+         @click.stop.prevent="toggleMenu(!sidebar.collapsed, device.isMobile)">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+    </nav>
   </header>
 </template>
 
 <script>
+import { mapGetters, mapMutations } from 'vuex'
+import types from '../../store/mutation-types'
 export default {
-  name: 'Navbar'
+  name: 'Navbar',
+  data () {
+    return {
+
+    }
+  },
+  computed: mapGetters({
+    sidebar: 'sidebar',
+    device: 'device'
+  }),
+  methods: {
+    toggleMenu (collapsed, isMobile) {
+      if (isMobile) {
+        this.toggleSidebarShow()
+      } else {
+        this.toggleSidebar()
+      }
+    },
+    ...mapMutations({
+      toggleSidebar: types.TOGGLE_SIDEBAR,
+      toggleSidebarShow: types.TOGGLE_SIDEBAR_SHOW,
+      setUserInfo: types.SET_USER_INFO
+    })
+  }
 }
 </script>
 
@@ -59,7 +90,7 @@ export default {
     font-size: 20px;
     line-height: 50px;
     text-align: center;
-    width: 230px;
+    width: 180px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     padding: 0 15px;
     font-weight: 300;
@@ -79,7 +110,7 @@ export default {
     -o-transition: margin-left 0.3s ease-in-out;
     transition: margin-left 0.3s ease-in-out;
     margin-bottom: 0;
-    margin-left: 230px;
+    /* margin-left: 230px; */
     border: none;
     min-height: 50px;
     border-radius: 0;
