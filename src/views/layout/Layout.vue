@@ -68,4 +68,7 @@ export default {
     position: absolute;
     z-index: 999;
   }
+  .sidebar-container {
+    border-right: 1px solid #D3D3D3;
+  }
 </style>
